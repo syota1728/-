@@ -18,6 +18,8 @@ STEP = 10 #道のりのステップ数
 EPSILON = 0.15 #行動選択のランダム性の決定
 SEED = 32767 #乱数のシード
 
+average_walk = [0 for i in range(ILIMIT)]
+
 # 下請け関数の定義
 # update()関数
 def update(cost, pheromone, mstep):
@@ -40,7 +42,8 @@ def update(cost, pheromone, mstep):
 		sum_lm += lm
 	#蟻の歩いた平均距離を出力
 	print(sum_lm/NOA)
-	return
+	
+	return sum_lm/NOA
 #update()関数の終わり
 
 #walk()関数
@@ -79,11 +82,22 @@ for i in range(ILIMIT):
 	#蟻を歩かせる
 	walk(cost, pheromone, mstep)
 	#フェロモンの更新
-	update(cost, pheromo
-	
-	ne, mstep)
+	average_walk[i] = update(cost, pheromone, mstep)
 #フェロモンの状態出力
 print(i)
 print(pheromone)
+
+"""蟻の歩いた平均距離の可視化プログラム"""
+import matplotlib.pyplot as plt
+import numpy as ny
+x = range(1,ILIMIT+1)
+
+plt.plot(x,average_walk)
+plt.xlabel("epoch")
+plt.ylabel("average distance")
+plt.grid(axis='y')
+plt.title("The average distance an ant has walked(50)")
+plt.show()
+
 
 #aco.pyの終わり
