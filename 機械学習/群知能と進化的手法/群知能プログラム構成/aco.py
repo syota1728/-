@@ -10,8 +10,8 @@ import math
 import random
 
 # グローバル変数
-NOA = 10 #蟻の個体数
-ILIMIT = 150 #繰り返しの回数
+NOA = 20 #蟻の個体数
+ILIMIT = 50 #繰り返しの回数
 Q = 3 #フェロモン更新の定数
 RHO = 0.8 #蒸発の定数
 STEP = 10 #道のりのステップ数
@@ -97,24 +97,7 @@ plt.xlabel("epoch")
 plt.ylabel("average distance")
 plt.grid(axis='y')
 plt.title("The average distance an ant has walked(50)")
-# ===== パラメータ表示 =====
-params = (
-    f"NOA = {NOA}\n"
-    f"ILIMIT = {ILIMIT}\n"
-    f"Q = {Q}\n"
-    f"RHO = {RHO}\n"
-    f"STEP = {STEP}\n"
-    f"EPSILON = {EPSILON}\n"
-    f"SEED = {SEED}"
-)
-
-plt.text(
-    1.02, 0.5, params,
-    transform=plt.gca().transAxes,
-    va='center',
-    bbox=dict(boxstyle="round", fc="white", ec="black")
-)
-
-plt.tight_layout()
 plt.show()
+
+
 #aco.pyの終わり
